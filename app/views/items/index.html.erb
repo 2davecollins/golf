@@ -1,4 +1,4 @@
-<p id="notice"><% notice %></p>
+<!--<p id="notice"><% notice %></p>-->
 
 <h1>Catalog</h1>
 <table class="catalog">
@@ -20,7 +20,8 @@
                 <%= link_to item.price ,item %>    
             </div>
             <div class="links">
-                <% if session[:login] == 1 %>
+                <!--% if session[:login] == 1 %--> 
+                <% if current_user.admin? %>
                     <%= link_to 'Edit', edit_item_path(item) %>
                     <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>                
                                    
@@ -35,7 +36,8 @@
     <% end %>
 
 </table>
-<% if session[:login] == 1 %>
+<!--% if session[:login] == 1 %-->
+<% if current_user.admin? %>
     <p><%= link_to 'New Item', new_item_path %></p>
 <% end %>
 

@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  before_filter :authenticate_user!
+  before_filter :ensure_admin, :only => [:edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -58,6 +61,12 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+  
+  def ensure_admin
+    unless current_user && current_user.admin?
+    render :text => "Access Error Message", :status => :unauthorized
     end
   end
 
