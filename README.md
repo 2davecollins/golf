@@ -48,15 +48,21 @@ click + add project
 
 select git and add url https://github.com/2davecollins/golf.git
 
-Git Remotes
+open up workspace and cd into new project.
 
-Git Branches select origin/Admin
+change to the Admin branch
+ 
+Click The Git tab in header
+
+select Remote > Fetch tick box fetch all branches click fetch
+
+Git tab select Remotes
+
+Git Branches select origin/Admi
+
 click checkout
 
-
-cd into project
-
-bundle install
+in terminal type bundle install
 
 rake db:migrate
 
